@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+html,body {
+  margin: 0;
+}
+
+.oc-slide {
+  -webkit-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+#oc-main {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#oc-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+}
+
+#oc-content {
+  position: relative;
+  padding: 30px 60px;
+}
+
+#oc-menu-trigger {
+  position: fixed;
+  cursor: pointer;
+  z-index: 1;
+}
+
+#oc-menu-trigger > button {
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+}
+
+.oc-menu-trigger-left {
+  top: 20px;
+  left: 20px;
+}
+
+.oc-menu-trigger-right {
+  top: 20px;
+  right: 20px;
+}
+
+#oc-menu {
+  display: none;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  background-color: #000000;
+  color: #ffffff;
+  -webkit-overflow-scrolling: touch;
+  width: 240px;
+}
+
+.oc-menu-left {
+  top: 0px;
+  left: 0px;
+}
+
+.oc-menu-right {
+  top: 0px;
+  right: 0px;
+}
+
+.oc-menu-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.oc-menu-item {
+  padding: 15px 30px;
+}
+
+.oc-menu-item > a {
+  display: block;
+  color: #ffffff;
+}
+
+@media (min-width: 768px) {
+  #oc-content {
+    padding: 60px 120px;
+  }
+
+  #oc-menu {
+    width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  #oc-menu {
+    width: 400px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

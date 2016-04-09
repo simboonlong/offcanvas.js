@@ -1,0 +1,117 @@
+// =====================================================================
+// Offcanvas (oc)
+// =====================================================================
+
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+// ================================
+// apply .oc-slide class to any elements that requires to be slided
+// ================================
+.oc-slide {
+    transform: translate(0,0); // animate by js
+}
+
+
+// ================================
+// main content
+// ================================
+#oc-main {
+    width:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+
+    &.is-active {
+        // any additional states here
+    }
+}
+    #oc-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $color-white;
+    }
+        #oc-content {
+            position: relative;
+
+            padding: 30px 60px;
+            @include breakpoint(sm) {
+                padding: 60px 120px;
+            }
+        }
+
+
+// ================================
+// menu
+// ================================
+#oc-menu-trigger {
+    position:fixed;
+    cursor: pointer;
+    z-index:1;
+
+    > button {
+        cursor: pointer;
+        width: 100px;
+        height: 40px;
+    }
+}
+.oc-menu-trigger-left {
+    top: 20px;
+    left: 20px;
+}
+.oc-menu-trigger-right {
+    top: 20px;
+    right: 20px;
+}
+
+#oc-menu {
+    display: none;
+    position:fixed;
+    height: 100%;
+    overflow: auto;
+    background-color: $color-black;
+    color: $color-white;
+    -webkit-overflow-scrolling: touch;
+
+    width: 240px;
+    @include breakpoint(sm) {
+        width: 300px;
+    }
+    @include breakpoint(md) {
+        width: 400px;
+    }
+}
+.oc-menu-left {
+    top:0px;
+    left:0px;
+}
+.oc-menu-right {
+    top:0px;
+    right:0px;
+}
+
+    .oc-menu-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+        .oc-menu-item {
+            padding: 15px 30px;
+
+            > a {
+                display: block;
+                color: $color-white;
+            }
+        }
