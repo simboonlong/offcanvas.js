@@ -1,6 +1,5 @@
-
 /*!
-modal.js - http://simboonlong.com
+offcanvas.js - http://simboonlong.com
 Licensed under the MIT license
 
 Copyright (c) 2017 Sim Boon Long
@@ -15,62 +14,80 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 var OffCanvas = (function() {
 
     // settings
-    var ocAll = $('html, body, #oc-main, #oc-container');
-    var ocMain = $('#oc-main');
-    var ocOverlay = $('.oc-overlay');
-    var ocContainer = $('#oc-container');
-    var ocContent = $('#oc-content');
-    var ocMenu = $('.oc-menu');
-    var ocMenuLeft = $('.oc-menu[data-oc-menu-trigger="left"]');
-    var ocMenuRight = $('.oc-menu[data-oc-menu-trigger="right"]');
-    var ocSlide = $('.oc-slide');
-    var ocMenuTrigger = $('.oc-menu-trigger');
+    var settings = {};
 
     var deactivate = function() {
-        ocMain.removeClass('is-active is-opened-left is-opened-right');
-        ocMenu.removeClass('is-slide-left is-slide-right');
-        ocSlide.removeClass('is-slide-left is-slide-right');
+        settings.ocMain.removeClass('is-active is-opened-left is-opened-right');
+        settings.ocMenu.removeClass('is-slide-left is-slide-right');
+        settings.ocSlide.removeClass('is-slide-left is-slide-right');
     };
 
     var activate = function() {
 
         var trigger = $(this).attr('data-oc-menu-trigger');
 
-        if (!ocMain.hasClass('is-active')) {
+        if (!settings.ocMain.hasClass('is-active')) {
+
             if ( trigger === 'left' ) {
-                if ( ocMenuLeft.hasClass('oc-menu-overlap') ) {
-                    ocSlide.not('#oc-container').not('.oc-overlay').not('.oc-menu-trigger').addClass('is-slide-left');
+
+                if ( settings.ocMenuLeft.hasClass('oc-menu-overlap') ) {
+
+                    settings.ocSlide.not('#oc-container').not('.oc-overlay').not('.oc-menu-trigger').addClass('is-slide-left');
+
                 } else {
-                    ocSlide.addClass('is-slide-left');
+
+                    settings.ocSlide.addClass('is-slide-left');
+
                 }
-                ocMenuLeft.addClass('is-slide-left');
+
+                settings.ocMenuLeft.addClass('is-slide-left');
+
             } else {
-                if ( ocMenuRight.hasClass('oc-menu-overlap') ) {
-                    ocSlide.not('#oc-container').not('.oc-overlay').not('.oc-menu-trigger').addClass('is-slide-right');
+
+                if ( settings.ocMenuRight.hasClass('oc-menu-overlap') ) {
+
+                    settings.ocSlide.not('#oc-container').not('.oc-overlay').not('.oc-menu-trigger').addClass('is-slide-right');
+
                 } else {
-                    ocSlide.addClass('is-slide-right');
+
+                    settings.ocSlide.addClass('is-slide-right');
+
                 }
-                ocMenuRight.addClass('is-slide-right');
+
+                settings.ocMenuRight.addClass('is-slide-right');
+
             }
-            ocMain.addClass('is-active is-opened-'+trigger+'');
+
+            settings.ocMain.addClass('is-active is-opened-' + trigger + '');
+
         }
 
     };
 
-
     var init = function() {
 
-        ocMenuTrigger.on('click', activate );
-        ocOverlay.on('click', deactivate );
+        // dom selectors
+        settings.ocAll = $('html, body, #oc-main, #oc-container');
+        settings.ocMain = $('#oc-main');
+        settings.ocOverlay = $('.oc-overlay');
+        settings.ocContainer = $('#oc-container');
+        settings.ocContent = $('#oc-content');
+        settings.ocMenu = $('.oc-menu');
+        settings.ocMenuLeft = $('.oc-menu[data-oc-menu-trigger="left"]');
+        settings.ocMenuRight = $('.oc-menu[data-oc-menu-trigger="right"]');
+        settings.ocSlide = $('.oc-slide');
+        settings.ocMenuTrigger = $('.oc-menu-trigger');
+
+        // bind events
+        settings.ocMenuTrigger.on('click', activate );
+        settings.ocOverlay.on('click', deactivate );
 
     };
 
     return {
-        init : init
+        init : init,
+        settings : settings
     };
 
 })();
 
-
-
-OffCanvas.init();
